@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:head>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+    
+    <h:body>
+        <h:form>
+            <p:remoteCommand name="nomeRemoteCommand" id="idRemoteCommand" update="pnlUsuario"
+                             action="#{usuarioAcessoController.prepareAutenticarUsuario()}"/>
+            <p:growl id="growl" />
+            <p:panel id="pnlUsuario">
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_usrLogin}" for="usrLogin" />
+                    <p:inputText id="usrLogin" value="#{usuarioAcessoController.selected.usrLogin}" 
+                                 title="#{bundle.CreateUsuarioTitle_usrLogin}" required="true" 
+                                 requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usrLogin}"/>
+
+                    <p:outputLabel value="#{bundle.CreateUsuarioLabel_usrSenha}" for="usrSenha" />
+                    <p:password id="usrSenha" value="#{usuarioAcessoController.selected.usrSenha}" 
+                                 title="#{bundle.CreateUsuarioTitle_usrSenha}" required="true" 
+                                 requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usrSenha}"/>
+                </h:panelGrid>
+                <p:commandButton action="#{usuarioAcessoController.autenticarUsuario()}" 
+                                 value="Acessar" update="growl"/>
+
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

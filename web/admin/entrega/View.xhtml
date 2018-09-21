@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntregaViewDlg" widgetVar="EntregaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEntregaTitle}">
+            <h:form id="EntregaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{entregaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEntregaLabel_entId}"/>
+                        <h:outputText value="#{entregaController.selected.entId}" title="#{bundle.ViewEntregaTitle_entId}"/>
+                        <h:outputText value="#{bundle.ViewEntregaLabel_entDataEntrega}"/>
+                        <h:outputText value="#{entregaController.selected.entDataEntrega}" title="#{bundle.ViewEntregaTitle_entDataEntrega}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEntregaLabel_camId}"/>
+                        <h:outputText value="#{entregaController.selected.camId}" title="#{bundle.ViewEntregaTitle_camId}"/>
+                        <h:outputText value="#{bundle.ViewEntregaLabel_proId}"/>
+                        <h:outputText value="#{entregaController.selected.proId}" title="#{bundle.ViewEntregaTitle_proId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EntregaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
